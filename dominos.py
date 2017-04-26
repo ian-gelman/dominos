@@ -1,17 +1,14 @@
 import time
 import tweepy
 
+import keys #put your Dominos API keys here. this is .gitignore'd so make this yourself
+
 target = '@dominos'
 
-consumer_key = 'zhcs14gsC2zEVQditWMP5zyjO'
-consumer_secret = 'W7yMSsTBFncspY6MhjmjENSbvSKOlKLcWuhxw8LIqLv4TOdbYp'
-access_token = '708779793098084352-Aq59kvjyACqZZwvC7N9Hu8GRpXbNrFM'
-access_token_secret = 'DLrNnFWyja1vHhot4FFFinyqR3GCufasHzHBxsHF2ejoc'
+auth = tweepy.OAuthHandler(keys.consumer_key, keys.consumer_secret)
+auth.set_access_token(keys.access_token, keys.access_token_secret)
 
-auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-auth.set_access_token(access_token, access_token_secret)
-
-api = tweepy.API(auth)
+api = tweepy.API(auth) #log into twitter boi
 
 def order():
 	#get most recent dm
