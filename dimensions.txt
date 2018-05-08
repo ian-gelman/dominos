@@ -1,0 +1,3 @@
+lid = 5.5 x 3.75 in
+whole box = 6 x 3.75 x 3.25 in
+
