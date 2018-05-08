@@ -4,8 +4,12 @@ from flask import render_template
 app = Flask(__name__)
 
 @app.route("/")
-def hello():
-    return render_template('index.html', message="hey")
+def index():
+    return render_template('index.html')
+
+@app.route("/update", method="POST")
+def update_script():
+    pass
 
 
 if __name__ == "__main__":  
