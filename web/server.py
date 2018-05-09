@@ -20,5 +20,9 @@ def run_script():
     pass
 
 
-if __name__ == "__main__":  
+if __name__ == "__main__":
+    import os
+    global scripts_path
+    scripts_path = os.environ.get('SCRIPTS_PATH', os.path.dirname(os.path.realpath(__file__))) + "/scripts/"
+
     app.run(debug=True)
