@@ -30,7 +30,7 @@ def upload_new_script():
 
 @app.route("/run", methods=["POST"])
 def execute_script():
-    return run_script()
+    return str(run_script())
 
 
 if __name__ == "__main__":
