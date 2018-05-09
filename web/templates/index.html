@@ -1,0 +1,92 @@
+<html>
+    <head>
+        <title>Cloud Button</title>
+        <style>
+            body {
+                margin: 0;
+                font-family: roboto;
+            }
+            h1 {
+                text-align: center;
+            }
+            .wrapper {
+                height: 100%;
+                background: radial-gradient(white, #e8e8e8 90%, grey)
+
+            }
+            .grid {
+                display: grid;
+                grid-template-columns: repeat(5, minmax(0, 1fr));
+                grid-gap: 10px;
+            }
+            @media (max-width: 500px) {
+                .grid {
+                    grid-template-columns: 0fr 4fr 0fr;
+                }
+            }
+            .box {
+                /*background-color: orange;*/
+            }
+            .box-3 {
+                grid-column: 2 / span 3;
+            }
+
+            .button_box {
+                grid-column: 2 / span 3;
+            }
+
+            .virtual_button {
+                background-color: #be0a0a;
+                width: 300px;
+                height: 300px;
+                border-radius: 50%;
+            }
+
+            .virtual_button .text {
+                position: relative;
+                top: 45%;
+                text-align: center;
+                font-size: 30;
+                color: white;
+            }
+            .virtual_button:active {
+                background-color: #8d0000;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="grid">
+                <div class="box">
+                </div>
+                <div class="box-3">
+                    <h1>Welcome to your Button</h1>
+
+                    <div class="grid">
+                        <div class="box">
+                        </div>
+                        <div class="button_box">
+                            <div id="button" class="virtual_button">
+                                <div class="text">Press</div>
+                            </div>
+                        </div>
+                        <div class="box">
+                        </div>
+                        
+
+                    </div>
+                </div>
+                <div class="box">
+                </div>
+            </div>
+        </div>
+
+        <script>
+            document.getElementById('button').addEventListener('click', () => {
+                var xhttp = new XMLHttpRequest();
+                xhttp.open("POST", "/run", true); 
+                xhttp.send()
+            });
+        </script>
+    </body>
+</html>
