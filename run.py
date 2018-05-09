@@ -1,8 +1,8 @@
 from web.run_script import run_script
 try:
-    import RPi.GPIO as GPIO
+	import RPi.GPIO as GPIO
 except RuntimeError:
-    print("Error importing RPi.GPIO! This is probably because you need sudo.")
+	print("Error importing RPi.GPIO! This is probably because you need sudo.")
 
 # jack: Once the GPIO gets triggered, just call run_script() and the proper script will be run :)
 
