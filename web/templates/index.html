@@ -19,6 +19,12 @@
                 grid-template-columns: repeat(5, minmax(0, 1fr));
                 grid-gap: 10px;
             }
+            .inner_grid {
+                display: grid;
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+                grid-gap: 10px;
+            }
+
             @media (max-width: 500px) {
                 .grid {
                     grid-template-columns: 0fr 4fr 0fr;
@@ -32,13 +38,14 @@
             }
 
             .button_box {
-                grid-column: 2 / span 3;
+                grid-column: 2 / span 2;
             }
 
             .virtual_button {
                 background-color: #be0a0a;
-                width: 300px;
-                height: 300px;
+                width: 200px;
+                height: 200px;
+                margin: auto;
                 border-radius: 50%;
             }
 
@@ -52,7 +59,42 @@
             .virtual_button:active {
                 background-color: #8d0000;
             }
+            #settings_button {
+                margin-left: 15%;
+                margin-right: 15%;
+                width: 70%;
+            }
+
+            .menu_open {
+                top: 0;
+            }
+            .menu_closed {
+                display: none;
+                top: -100%;
+            }
+            .menu {
+                position: fixed;
+                transition-property: position;
+                transition-duration: 0.5s;
+                background-color: white;
+                margin: 10px;
+            }
+
         </style>
+        <script>
+            function update_script(name) {
+                var xhttp = new XMLHttpRequest();
+                xhttp.open("POST", "/run", true);
+                xhttp.send('script=' + name)
+            }
+
+            function open_settings() {
+                menu = document.getElementById("menu");
+                menu.classList.add("menu_open");
+                menu.classList.remove("menu_closed");
+            }
+
+        </script>
     </head>
     <body>
         <div class="wrapper">
@@ -62,7 +104,7 @@
                 <div class="box-3">
                     <h1>Welcome to your Button</h1>
 
-                    <div class="grid">
+                    <div class="inner_grid">
                         <div class="box">
                         </div>
                         <div class="button_box">
@@ -72,11 +114,21 @@
                         </div>
                         <div class="box">
                         </div>
-                        
-
                     </div>
                 </div>
                 <div class="box">
+                </div>
+            </div> <!-- .grid -->
+            <div class="grid" style="margin-top: 300px">
+                <div class="box"></div>
+                <div class="box-3">
+                    <button id="settings_button" onclick="open_settings()">Settings</button>
+                </div>
+                <div class="box"></div>
+            </div>
+            <div id="menu" class="menu menu_closed">
+                <div style="width: 100%">
+                    Hi!
                 </div>
             </div>
         </div>
@@ -84,9 +136,11 @@
         <script>
             document.getElementById('button').addEventListener('click', () => {
                 var xhttp = new XMLHttpRequest();
-                xhttp.open("POST", "/run", true); 
+                xhttp.open("POST", "/run", true);
                 xhttp.send()
             });
+
+
         </script>
     </body>
 </html>
